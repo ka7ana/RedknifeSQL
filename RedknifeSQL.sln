@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.34407.143
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLClient", "SQLClient.csproj", "{4D5B580E-1A19-4BF8-8D08-0D745821BA7B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedknifeSQL", "RedknifeSQL.csproj", "{4D5B580E-1A19-4BF8-8D08-0D745821BA7B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

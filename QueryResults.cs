@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 
-namespace SQLClient
+namespace RedknifeSQL
 {
     public class QueryResults
     {
