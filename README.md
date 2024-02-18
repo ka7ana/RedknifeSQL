@@ -1,8 +1,8 @@
-# SQLClient
+# RedknifeSQL
 
 A C# console utility for interacting with MSSQL servers
 
-SQLClient is a simple menu-based console application to aid with pen-testing, specifically whilst dealing with Microsoft SQL servers in an AD environment.
+RedknifeSQL is a simple menu-based console application to aid with pen-testing, specifically whilst dealing with Microsoft SQL servers in an AD environment.
 
 The application prompts the user for the server hostname and database name to connect to. At present, only Windows authentication is supported.
 
@@ -10,7 +10,7 @@ The application prompts the user for the server hostname and database name to co
 
 The following command line options are supported:
 
-- `--debug` - run SQLClient in debug mode (outputs all SQL queries/statements executed via options)
+- `--debug` - run RedknifeSQL in debug mode (outputs all SQL queries/statements executed via options)
 - `--server` - set the server hostname to connect to on startup (saves having to explicitly connect via option)
 - `--db` - set the database name to connect to on startup (saves having to explicitly connect via option)
 - `--script` - the path of a text file containing a SQL script to execute against the connected server (requires both `server` and `db` to be provided as args). This is for non-interactive mode.
@@ -18,7 +18,7 @@ The following command line options are supported:
 
 ## Interactive mode
 
-SQLClient interactive mode outputs a numeric menu to the user and loops until the user quits. The options are as follows:
+RedknifeSQL interactive mode outputs a numeric menu to the user and loops until the user quits. The options are as follows:
 
 1. `Connect to server` - initiates a connection to a specific server and database - the user is prompted for these values
 2. `Get current user information` - Outputs information about the current user database connection - the `SYSTEM_USER` and `USER_NAME()` values, as well as whether the user has the `public` and `sysadmin` roles.
@@ -39,15 +39,15 @@ SQLClient interactive mode outputs a numeric menu to the user and loops until th
 17. `Execute SQL Command` - execute an arbitrary SQL command provided by the user. Formats the output as a table.
 18. `Get server principals` - lists the `user`, `pricipal_id`, `type_desc` and `default_database_name` from `sys.server_principals`.
 
-### Exiting SQLClient
+### Exiting RedknifeSQL
 
-Entering option value `q`, `quit` or `exit` (irrespective of case) will exit SQLClient and close the current DB connection (if one exists).
+Entering option value `q`, `quit` or `exit` (irrespective of case) will exit RedknifeSQL and close the current DB connection (if one exists).
 
 ## Non-interactive (script mode)
 
-In script mode, SQLClient reads an input file (specified by the `--script` argument) containing SQL statements to execute. Note that the `--server` and `--db` command line args must be supplied in order to specify which server and database to connect to.
+In script mode, RedknifeSQL reads an input file (specified by the `--script` argument) containing SQL statements to execute. Note that the `--server` and `--db` command line args must be supplied in order to specify which server and database to connect to.
 
-Upon connecting to the specified database, SQLClient automatically executes the following options:
+Upon connecting to the specified database, RedknifeSQL automatically executes the following options:
 
 - `Get user information` (option 2)
 - `Get impersonatable roles` (option 3)
@@ -56,17 +56,17 @@ Upon connecting to the specified database, SQLClient automatically executes the 
 - `List TRUSTWORTHY databases` (option 11)
 - `Get linked SQL server info` (option 14)
 
-Once these options have been executed, SQLClient attempts to execute the script/statements as specified in the `--script` argument. 
+Once these options have been executed, RedknifeSQL attempts to execute the script/statements as specified in the `--script` argument. 
 
-## SQLClient as an InstallUtil Uninstall
+## RedknifeSQL as an InstallUtil Uninstall
 
-SQLClient can also be run as an InstallUtil Uninstall process, i.e.:
+RedknifeSQL can also be run as an InstallUtil Uninstall process, i.e.:
 
 ```
-C:\Windows\Microsoft.NET\Framework64\v4.0.30319\InstallUtil.exe /logfile= /LogToConsole=false /U C:\path\to\SQLClient.exe
+C:\Windows\Microsoft.NET\Framework64\v4.0.30319\InstallUtil.exe /logfile= /LogToConsole=false /U C:\path\to\RedknifeSQL.exe
 ```
 
-When run as an uninstaller, you can provide the arguments to SQLClient as a text file named `sqlclient.txt` (located in the same directory as `SQLClient.exe`) - these will be parsed and passed to SQLClient as if they had been specified at the command line directly.
+When run as an uninstaller, you can provide the arguments to RedknifeSQL as a text file named `RedknifeSQL.txt` (located in the same directory as `RedknifeSQL.exe`) - these will be parsed and passed to RedknifeSQL as if they had been specified at the command line directly.
 
-**Quick note**: when running as an uninstaller, the presence of sqlclient.txt is required. However, if no args are specified in the file, SQLClient will drop into interactive mode, which is quite handy :). I should get round to fixing this i.e. allow it to drop into interactive mode by default if no sqlclient.txt file present.
+**Quick note**: when running as an uninstaller, the presence of RedknifeSQL.txt is required. However, if no args are specified in the file, RedknifeSQL will drop into interactive mode, which is quite handy :). I should get round to fixing this i.e. allow it to drop into interactive mode by default if no RedknifeSQL.txt file present.
 
